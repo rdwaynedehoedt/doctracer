@@ -54,3 +54,57 @@ docker exec -it doctracer_neo4j_server bash
 ```bash
 neo4j-admin set-initial-password test
 ```
+
+## Running Doctracer
+
+```bash
+$ doctracer --help
+Usage: doctracer [OPTIONS] COMMAND [ARGS]...
+
+  Doctracer command line interface.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  extract  Extract information from gazette PDFs.
+```
+
+```bash
+doctracer extract --type extragazette --input gzt.pdf --output output.json
+```
+
+```bash
+{
+  "metadata": {
+    "Gazette ID": "2382/35",
+    "Gazette Published Date": "2024-05-03",
+    "Gazette Published by": "Authority"
+  },
+  "changes": {
+    "RENAME": [],
+    "MERGE": [],
+    "MOVE": [],
+    "ADD": [
+      {
+        "Parent Name": "Minister of Defence",
+        "Child Name": "National Hydrographic Act No. 7 of 2024",
+        "Type": "legislation",
+        "Date": "2024-05-03"
+      },
+      {
+        "Parent Name": "Minister of Education",
+        "Child Name": "Formulation and implementation of a national policy for pre-schools",
+        "Type": "policy",
+        "Date": "2024-05-03"
+      }
+    ],
+    "TERMINATE": [
+      {
+        "Type": "policy",
+        "Date": "2024-05-03"
+      }
+    ]
+  }
+}
+```
