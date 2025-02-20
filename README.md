@@ -6,6 +6,18 @@
 mamba create -n doctracer_env python=3.9
 ```
 
+To install required libraries run:
+
+```bash
+pip install -e .
+```
+
+Also add your OpenAI API key:
+
+```bash
+export OPENAI_API_KEY=`openai_key`
+```
+
 ### Setup Neo4j
 
 #### Environment Variables
@@ -70,8 +82,16 @@ Commands:
   extract  Extract information from gazette PDFs.
 ```
 
+To test extragazette amendment extraction try:
+
 ```bash
-doctracer extract --type extragazette --input gzt.pdf --output output.json
+doctracer extract --type extragazette_amendment --input data/testdata/sample_gazette.pdf --output output.json
+```
+
+To test extragazette table extraction try:
+
+```bash
+doctracer extract --type extragazette_table --input data/gzt_images --output output.txt
 ```
 
 ```bash
